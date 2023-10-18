@@ -9,5 +9,6 @@ Once the flow has been established, the user can extract the amount of force eac
 This is a foundation that can be expanded upon to include turbulence, intrinisc curvature/twist of the cells, more cells in any arrangement, and a maximum cell adhesion force prior to rupture
 Can be used to extract total force on a cell to estimate cell-cell adhesin rupture strength in a simple fluid flow assay
 
+Image of an equilibrated stokes flow around two stacked cells at user-defined angles wrt to the fluid flow.
 
 ![image](https://github.com/Fyzzx/Stacked-Bacteria-Stokes-Flow/assets/103218124/e24e1a68-d812-4814-8feb-d196d04adb96)
