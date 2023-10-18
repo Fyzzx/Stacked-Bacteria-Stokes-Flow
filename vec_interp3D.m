@@ -1,0 +1,21 @@
+function uuFL = vec_interp3D(uFL,r3D,hFL,GridNum,fLNum)
+% interpolate fluid velocity to the body
+uuFL=zeros(GridNum,3);
+s=r3D/hFL; % Get body position relative to grid
+i=floor(s);
+rdiff=s-i;
+w=vec_phi1(rdiff(:,1)).*vec_phi2(rdiff(:,2)).*vec_phi3(rdiff(:,3)); %Evaluate delta function
+w = permute(w, [1,3,4,2]); %Reogranize
+for k = 1:GridNum
+  i1=mod((i(k,1)-1):(i(k,1)+2),fLNum)+1; % Find adjacent fluid cells
+  i2=mod((i(k,2)-1):(i(k,2)+2),fLNum)+1;
+  i3=mod((i(k,3)-1):(i(k,3)+2),fLNum)+1;
+  
+  ww = w(:,:,:,k);
+  UU = [sum(sum(sum(ww.*uFL(i1,i2,i3,1)))), sum(sum(sum(ww.*uFL(i1,i2,i3,2)))),...
+      sum(sum(sum(ww.*uFL(i1,i2,i3,3))))]; %Interpolate
+ 
+  uuFL(k,:,:)= UU(1,:);
+  
+end
+end
